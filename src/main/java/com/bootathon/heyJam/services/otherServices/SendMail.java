@@ -20,8 +20,8 @@ public class SendMail{
         properties.put("mail.smtp.host","smtp.gmail.com");
         properties.put("mail.smtp.port","587");
 
-        String MyEmail="lokeshvarsakthi@gmail.com";
-        String MyPassword="lokeshanirudh";
+        String MyEmail="****************";
+        String MyPassword="*************";
 
         Session session= Session.getInstance(properties,new javax.mail.Authenticator(){
             protected PasswordAuthentication getPasswordAuthentication(){
