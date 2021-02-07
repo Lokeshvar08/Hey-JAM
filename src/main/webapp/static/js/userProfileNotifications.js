@@ -1,6 +1,6 @@
 let head = `
         <tr>
-            <th>Institution Common</th>
+            <th>Institutions</th>
             <th>Username</th>
             <th>Name</th>
             <th>Email</th>
@@ -64,6 +64,6 @@ const rejectRequest = (username) =>{
 }
 
 const details = (institution)=>{
-    localStorage.setItem('institution',institution);
-    window.location.href = "userInstitutionDetails.jsp";
+    // localStorage.setItem('institution',institution);
+    // window.location.href = "userInstitutionDetails.jsp";
 }

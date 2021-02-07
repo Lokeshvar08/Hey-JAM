@@ -143,4 +143,67 @@ public class UserInstitutionParticipantsRow {
         return followRequestSet;
     }
 
+    public static ArrayList<UserInstitutionParticipantsRow> userUserFollowings(String userProfileUsername) throws SQLException, ClassNotFoundException {
+        ArrayList<UserUserRelation> followRequests = UserUserRelation.userFollowing(userProfileUsername);
+        ArrayList<UserInstitutionParticipantsRow> followRequestSet = new ArrayList<>();
+        for(UserUserRelation user: followRequests){
+            UserProfile profile = UserProfile.getUserProfile(user.getUserProfile_Username_followee());
+            String institutions = "";
+            ResultSet relationProfile = UserInstitutionRelation.userInstitutions(user.getUserProfile_Username_followee());
+            while(relationProfile.next()){
+                institutions = institutions + relationProfile.getString("institutionProfileUniqueName")+" ";
+            }
+            if(profile != null) {
+                String userProfileUsernameParticipant = profile.getUserProfile_Username();
+                String userProfileNameParticipant = profile.getUserProfile_Name();
+                String userInstitutionJoiningYearParticipants = "";
+                String userInstitutionEmailParticipant = profile.getUserProfile_Email();
+                String userInstitutionDepartment = "";
+                int userUserFollowStatus = UserUserRelation.userUserRelationFollowStatus(userProfileUsername,user.getUserProfile_Username_followee());
+                followRequestSet.add(new UserInstitutionParticipantsRow(
+                        institutions,
+                        userProfileUsernameParticipant,
+                        userProfileNameParticipant,
+                        userInstitutionJoiningYearParticipants,
+                        userInstitutionDepartment,
+                        userInstitutionEmailParticipant,
+                        userUserFollowStatus)
+                );
+            }
+        }
+        return followRequestSet;
+    }
+
+
+    public static ArrayList<UserInstitutionParticipantsRow> userUserFollower(String userProfileUsername) throws SQLException, ClassNotFoundException {
+        ArrayList<UserUserRelation> followRequests = UserUserRelation.userFollower(userProfileUsername);
+        ArrayList<UserInstitutionParticipantsRow> followRequestSet = new ArrayList<>();
+        for(UserUserRelation user: followRequests){
+            UserProfile profile = UserProfile.getUserProfile(user.getUserProfile_Username_follower());
+            String institutions = "";
+            ResultSet relationProfile = UserInstitutionRelation.userInstitutions(user.getUserProfile_Username_follower());
+            while(relationProfile.next()){
+                institutions = institutions + relationProfile.getString("institutionProfileUniqueName")+" ";
+            }
+            if(profile != null) {
+                String userProfileUsernameParticipant = profile.getUserProfile_Username();
+                String userProfileNameParticipant = profile.getUserProfile_Name();
+                String userInstitutionJoiningYearParticipants = "";
+                String userInstitutionEmailParticipant = profile.getUserProfile_Email();
+                String userInstitutionDepartment = "";
+                int userUserFollowStatus = UserUserRelation.userUserRelationFollowStatus(user.getUserProfile_Username_followee(),user.getUserProfile_Username_follower());
+                followRequestSet.add(new UserInstitutionParticipantsRow(
+                        institutions,
+                        userProfileUsernameParticipant,
+                        userProfileNameParticipant,
+                        userInstitutionJoiningYearParticipants,
+                        userInstitutionDepartment,
+                        userInstitutionEmailParticipant,
+                        userUserFollowStatus)
+                );
+            }
+        }
+        return followRequestSet;
+    }
+
 }

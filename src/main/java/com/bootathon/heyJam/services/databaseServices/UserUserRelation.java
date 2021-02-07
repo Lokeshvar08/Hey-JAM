@@ -21,6 +21,7 @@ public class UserUserRelation {
         this.getUserUserRelation_Status = getUserUserRelation_Status;
     }
 
+
     public int getUserUserRelation_id() {
         return userUserRelation_id;
     }
@@ -65,7 +66,7 @@ public class UserUserRelation {
 
     public static ArrayList<UserUserRelation> userUserRelationUserRequests(String userProfile_Username_followee) throws SQLException, ClassNotFoundException {
         Connection connection = DatabaseConnector.getConnection();
-        String query = "SELECT * FROM useruserrelation WHERE userProfile_Username_followee=?";
+        String query = "SELECT * FROM useruserrelation WHERE userProfile_Username_followee=? AND userUserRelation_Status=0";
         PreparedStatement stmt = connection.prepareStatement(query);
         stmt.setString(1,userProfile_Username_followee);
         ResultSet rs = stmt.executeQuery();
@@ -135,4 +136,43 @@ public class UserUserRelation {
         return followStatus;
     }
 
+    public static ArrayList<UserUserRelation> userFollowing(String username) throws SQLException, ClassNotFoundException {
+        Connection con = DatabaseConnector.getConnection();
+        String query = "SELECT * FROM useruserrelation WHERE userProfile_Username_follower=? AND userUserRelation_Status=1";
+        PreparedStatement stmt = con.prepareStatement(query);
+        stmt.setString(1,username);
+        ResultSet rs = stmt.executeQuery();
+        ArrayList<UserUserRelation> following = new ArrayList<>();
+        while(rs.next()){
+            following.add(
+                    new UserUserRelation(
+                            rs.getInt("userUserRelation_id"),
+                            rs.getString("userProfile_Username_follower"),
+                            rs.getString("userProfile_Username_followee"),
+                            rs.getInt("userUserRelation_Status")
+                    )
+            );
+        }
+        return following;
+    }
+
+    public static ArrayList<UserUserRelation> userFollower(String username) throws SQLException, ClassNotFoundException {
+        Connection con = DatabaseConnector.getConnection();
+        String query = "SELECT * FROM useruserrelation WHERE userProfile_Username_followee=? AND userUserRelation_Status=1";
+        PreparedStatement stmt = con.prepareStatement(query);
+        stmt.setString(1,username);
+        ResultSet rs = stmt.executeQuery();
+        ArrayList<UserUserRelation> following = new ArrayList<>();
+        while(rs.next()){
+            following.add(
+                    new UserUserRelation(
+                            rs.getInt("userUserRelation_id"),
+                            rs.getString("userProfile_Username_follower"),
+                            rs.getString("userProfile_Username_followee"),
+                            rs.getInt("userUserRelation_Status")
+                    )
+            );
+        }
+        return following;
+    }
 }

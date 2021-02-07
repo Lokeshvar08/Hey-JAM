@@ -1,15 +1,15 @@
 <%--
   Created by IntelliJ IDEA.
   User: HP
-  Date: 31-01-2021
-  Time: 22:55
+  Date: 07-02-2021
+  Time: 17:20
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
-    <title>Surveys</title>
-    <link rel="stylesheet" href="static/css/userProfileInstitution.css">
+    <title>Title</title>
+    <link rel="stylesheet" href="static/css/userInstitutionDetails.css">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
 </head>
 <body>
@@ -31,18 +31,19 @@
         <input type="submit" value="logout">
     </form>
 </nav>
-<div class="dashboard">
-    <a style="color: #184770; "><strong>Dashboard</strong></a>
+<div class="topnav">
+    <h1><strong>Following</strong></h1><br>
 </div>
-<div id="top">
-    <h2 id="institutionName" style="align-content: center;"></h2>
+<div class="top">
+    <h2 id="detailsHead" style="align-content: center;">People Follow You</h2>
 </div>
-<div id="btn">
-    <button onclick="window.location.href='userInstitutionDetails.jsp'" style="background-color: #184770; border-color:wheat; color: white; width: 150px; height: 50px;" type="button">Details</button>
-</div>
-<div id="institutionSurvey" style="margin-top: 170px;">
+<div class="viewinstitution">
+    <table id="participants" cellpadding="10" >
+
+
+    </table>
 </div>
 </body>
 <script src="https://code.jquery.com/jquery-3.5.1.js" integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc=" crossorigin="anonymous"></script>
-<script src="static/js/userProfileInstitutionSurvey.js"></script>
+<script src="static/js/userProfileFollower.js"></script>
 </html>
