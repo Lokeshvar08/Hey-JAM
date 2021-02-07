@@ -1,14 +1,14 @@
 <%--
   Created by IntelliJ IDEA.
   User: HP
-  Date: 01-02-2021
-  Time: 10:09
+  Date: 07-02-2021
+  Time: 09:03
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
-    <title>Details</title>
+    <title>Notifications</title>
     <link rel="stylesheet" href="static/css/userInstitutionDetails.css">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
 </head>
@@ -25,14 +25,14 @@
     <a  style="font-size: 12px" href="userProfileHome.jsp">your <b>Institutions</b></a>
     <a style="font-size: 12px" href="#yourjams">your <b>JAMs</b></a>
     <a style="font-size: 12px" href="#partiesandsurveys">throw <b>parties & surveys</b></a>
-    <a style="font-size: 12px" href="userProfileNotifications.jsp">Notifications</a>
+    <a style="font-size: 12px" href="#notifications">Notifications</a>
     <a style="font-size: 12px" href="#chat">chat</a>
     <form method="get" action="UserInstitutionProfileLogout">
         <input type="submit" value="logout">
     </form>
 </nav>
 <div class="topnav">
-    <h1><strong>Participants</strong></h1><br>
+    <h1><strong>Notifications</strong></h1><br>
 </div>
 <div class="top">
     <h2 id="detailsHead" style="align-content: center;"></h2>
@@ -45,5 +45,5 @@
 </div>
 </body>
 <script src="https://code.jquery.com/jquery-3.5.1.js" integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc=" crossorigin="anonymous"></script>
-<script src="static/js/userInstitutionDetails.js"></script>
+<script src="static/js/userProfileNotifications.js"></script>
 </html>

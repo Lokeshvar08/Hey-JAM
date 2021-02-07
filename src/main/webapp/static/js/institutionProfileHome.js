@@ -1,5 +1,6 @@
 const getEvents = ()=>{
     let body = "<h2>No Events To Display</h2>";
+
     $.get(
         "http://localhost:8080/heyJam_war_exploded/GetEventsOfInstitution",
         (responseText)=>{

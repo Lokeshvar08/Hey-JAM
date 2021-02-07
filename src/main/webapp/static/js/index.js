@@ -162,15 +162,15 @@ $("#login").click(()=>{
            }
        );
        if(profile==="1"){
-           login('http://localhost:8080/heyJam_war_exploded/UserLogin',details,profile);
+           login('http://localhost:8080/heyJam_war_exploded/UserLogin',details,profile,username);
        }else{
-           login('http://localhost:8080/heyJam_war_exploded/InstitutionLogin',details,profile);
+           login('http://localhost:8080/heyJam_war_exploded/InstitutionLogin',details,profile,username);
        }
    }
 });
 
 
-const login = (url,details,key) =>{
+const login = (url,details,key,username) =>{
     const request = new Request(
         url,
         {
@@ -186,6 +186,8 @@ const login = (url,details,key) =>{
             throw new Error("Something wrong with API");
         }
     }).then(response => {
+        console.log(username);
+        localStorage.setItem('institution',username);
         if(response.account){
             if(key==="1") {
                 window.location.href = "http://localhost:8080/heyJam_war_exploded/userProfileHome.jsp";

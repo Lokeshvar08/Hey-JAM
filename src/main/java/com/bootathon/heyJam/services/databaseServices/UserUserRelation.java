@@ -6,6 +6,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 
 public class UserUserRelation {
     private int userUserRelation_id;
@@ -60,6 +61,24 @@ public class UserUserRelation {
         stmt.setString(2,userProfile_Username_followee);
         int n = stmt.executeUpdate();
         return n!=0;
+    }
+
+    public static ArrayList<UserUserRelation> userUserRelationUserRequests(String userProfile_Username_followee) throws SQLException, ClassNotFoundException {
+        Connection connection = DatabaseConnector.getConnection();
+        String query = "SELECT * FROM useruserrelation WHERE userProfile_Username_followee=?";
+        PreparedStatement stmt = connection.prepareStatement(query);
+        stmt.setString(1,userProfile_Username_followee);
+        ResultSet rs = stmt.executeQuery();
+        ArrayList<UserUserRelation> followRequests = new ArrayList<>();
+        while(rs.next()){
+            followRequests.add(new UserUserRelation(
+                    rs.getInt("userUserRelation_id"),
+                    rs.getString("userProfile_Username_follower"),
+                    rs.getString("userProfile_Username_followee"),
+                    rs.getInt("userUserRelation_Status"))
+            );
+        }
+        return followRequests;
     }
 
     public static boolean userUserRelationRejectRequest(String userProfile_Username_follower,String userProfile_Username_followee) throws SQLException, ClassNotFoundException {

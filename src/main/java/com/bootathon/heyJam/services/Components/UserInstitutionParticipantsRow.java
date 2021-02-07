@@ -4,6 +4,7 @@ import com.bootathon.heyJam.services.databaseServices.UserInstitutionRelation;
 import com.bootathon.heyJam.services.databaseServices.UserProfile;
 import com.bootathon.heyJam.services.databaseServices.UserUserRelation;
 
+import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
@@ -109,6 +110,37 @@ public class UserInstitutionParticipantsRow {
             }
         }
         return participants;
+    }
+
+    public static ArrayList<UserInstitutionParticipantsRow> userUserNotifications(String userProfileUsername) throws SQLException, ClassNotFoundException {
+        ArrayList<UserUserRelation> followRequests = UserUserRelation.userUserRelationUserRequests(userProfileUsername);
+        ArrayList<UserInstitutionParticipantsRow> followRequestSet = new ArrayList<>();
+        for(UserUserRelation user: followRequests){
+            UserProfile profile = UserProfile.getUserProfile(user.getUserProfile_Username_follower());
+            String institutions = "";
+            ResultSet relationProfile = UserInstitutionRelation.userInstitutions(user.getUserProfile_Username_follower());
+            while(relationProfile.next()){
+                institutions = institutions + relationProfile.getString("institutionProfileUniqueName")+" ";
+            }
+            if(profile != null) {
+                String userProfileUsernameParticipant = profile.getUserProfile_Username();
+                String userProfileNameParticipant = profile.getUserProfile_Name();
+                String userInstitutionJoiningYearParticipants = "";
+                String userInstitutionEmailParticipant = profile.getUserProfile_Email();
+                String userInstitutionDepartment = "";
+                int userUserFollowStatus = 4;
+                followRequestSet.add(new UserInstitutionParticipantsRow(
+                        institutions,
+                        userProfileUsernameParticipant,
+                        userProfileNameParticipant,
+                        userInstitutionJoiningYearParticipants,
+                        userInstitutionDepartment,
+                        userInstitutionEmailParticipant,
+                        userUserFollowStatus)
+                );
+            }
+        }
+        return followRequestSet;
     }
 
 }
