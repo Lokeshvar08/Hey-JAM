@@ -1,15 +1,15 @@
 <%--
   Created by IntelliJ IDEA.
   User: HP
-  Date: 07-02-2021
-  Time: 16:41
+  Date: 08-02-2021
+  Time: 19:40
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
-    <title>Title</title>
-    <link rel="stylesheet" href="static/css/userInstitutionDetails.css">
+    <title>User Profile</title>
+    <link rel="stylesheet" href="static/css/user_profile.css">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
 </head>
 <body>
@@ -32,18 +32,12 @@
     </form>
 </nav>
 <div class="topnav">
-    <h1><strong>Following</strong></h1><br>
+    <h1 style="margin-left: 360px; margin-top: 30px; "><strong>User Profile</strong></h1><br>
 </div>
-<div class="top">
-    <h2 id="detailsHead" style="align-content: center;">People you Follow</h2>
-</div>
-<div class="viewinstitution">
-    <table id="participants" cellpadding="10" >
+<div id="details">
 
-
-    </table>
 </div>
 </body>
 <script src="https://code.jquery.com/jquery-3.5.1.js" integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc=" crossorigin="anonymous"></script>
-<script src="static/js/userProfileFollowing.js"></script>
+<script src="static/js/userProfileDetails.js"></script>
 </html>

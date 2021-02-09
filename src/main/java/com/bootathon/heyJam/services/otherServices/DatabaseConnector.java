@@ -8,8 +8,8 @@ public class DatabaseConnector {
     public static Connection getConnection() throws ClassNotFoundException, SQLException {
         Class.forName("com.mysql.cj.jdbc.Driver");
         String url="jdbc:mysql://localhost:3306/heyjam";
-        String user="*******";
-        String pass="*******";
+        String user="root";
+        String pass="riseup08chillbro";
         Connection connection= DriverManager.getConnection(url,user,pass);
         return connection;
     }

@@ -22,11 +22,11 @@
     %>
     <nav>
         <h4 style="color: white; font-weight: bold">Hey! <%=username%></h4>
+        <a style="font-size: 12px" href="userProfileEdit.jsp">Edit Profile</a>
         <a  style="font-size: 12px" href="userProfileHome.jsp">your <b>Institutions</b></a>
         <a style="font-size: 12px" href="userFollowing.jsp">following</a>
         <a style="font-size: 12px" href="userProfileFollowers.jsp">followers</a>
         <a style="font-size: 12px" href="userProfileNotifications.jsp">Notifications</a>
-        <a style="font-size: 12px" href="#chat">chat</a>
         <form method="get" action="UserInstitutionProfileLogout">
             <input type="submit" value="logout">
         </form>

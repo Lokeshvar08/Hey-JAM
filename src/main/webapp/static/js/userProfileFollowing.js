@@ -97,3 +97,8 @@ const followStatusProcess = (value)=>{
         );
     }
 }
+
+const userDetails = (value)=>{
+    localStorage.setItem('userProfileDetail',value);
+    window.location.href = 'userProfileDetails.jsp';
+}
